@@ -7,7 +7,10 @@ def main():
     )
     report.build_file()
     with QueryExecutor(db="DemoDB") as exec:
-        result = exec.execute_query(filename="top_cities_by_population")
+        result = exec.execute_query(
+            filename="top_cities_by_population",
+            params={"population_threshold": 500000}
+        )
     report.make_worksheet(
         sheet_name="Top Cities",
         query_results=result
