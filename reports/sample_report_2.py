@@ -14,11 +14,11 @@ def main():
     )
     by_state = ResultFilter(result_to_filter=result, filter_by="state_name")
     by_state.filter()
-    for state, data in by_state:
+    for state_name, state_data in by_state:
         report.make_worksheet(
-            sheet_name=state,
-            query_results=data
-    )
+            sheet_name=state_name,
+            query_results=state_data
+        )
     report.to_recipients = ['william.mcmonagle@ankura.com']
     report.cc_recipients = [
         'edward.nunes@ankura.com',
